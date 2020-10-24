@@ -8,9 +8,9 @@ Host website on EC2 instance using httpd server
 
 ## Hosting
 
-Copy all the contents to /var/www/html
-sudo service httpd start
-sudo service httpd status
+* Copy all the contents to /var/www/html
+* sudo service httpd start
+* sudo service httpd status
 
 
 ## Website URL:
