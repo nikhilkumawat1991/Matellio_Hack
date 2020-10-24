@@ -14,4 +14,4 @@ Host website on EC2 instance using httpd server
 
 
 ## Website URL:
-public IP address of EC2 instance: https://3.15.20.29
+public IP address of EC2 instance: http://3.15.20.29
