@@ -6,7 +6,7 @@ GPIO.setup(26,GPIO.OUT)
 true = 1
 while(true):
     try:
-        response = urllib2.urlopen('http://softxide.com/iot/home_auto/buttonStatus.php')
+  
         status = response.read()
         
      except urllib2.HTTPError, e:
