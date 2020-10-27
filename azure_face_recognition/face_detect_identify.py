@@ -10,12 +10,12 @@ args = vars(ap.parse_args())
 print(args["image"])
 
 
-subscription_key = "17a60b69cfc54de5bf8f06406a02ae31"
+subscription_key = "f14c956c6839404499b188309e23432f"
 assert subscription_key
 personGroupId="matellio"
 headers = {'Ocp-Apim-Subscription-Key': subscription_key }
 
-FACE_ENDPOINT="https://facerecognitionresource.cognitiveservices.azure.com/"
+FACE_ENDPOINT="https://matelliofacerecognition.cognitiveservices.azure.com/"
 
 def face_detect_identify():
     headers = {'Content-Type': 'application/octet-stream',
