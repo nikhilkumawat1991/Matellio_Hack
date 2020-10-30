@@ -1,7 +1,10 @@
 ## Installation Steps
 sudo apt install ruby-dev
+
 sudo apt install build-essential
+
 sudo gem install fluentd -v "~> 0.12.0"
+
 sudo fluent-gem install fluent-plugin-td
 
 sudo fluentd --setup /etc/fluent
