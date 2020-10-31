@@ -7,6 +7,8 @@ sudo gem install fluentd -v "~> 0.12.0"
 
 sudo fluent-gem install fluent-plugin-td
 
+sudo gem install fluent-plugin-json
+
 sudo fluentd --setup /etc/fluent
 sudo vi /etc/fluent/fluent.conf
 
