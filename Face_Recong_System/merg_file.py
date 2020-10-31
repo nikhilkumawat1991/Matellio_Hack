@@ -1,4 +1,4 @@
-
+import converter_json
 def merge_csv():
     import os
     import glob
@@ -12,3 +12,6 @@ def merge_csv():
     time_sheet=pd.read_csv("combined_csv.csv")
     time_sheet.drop_duplicates(inplace=True)
     time_sheet.to_csv("time_sheet_emp.csv")
+    time_sheet.to_json("time_sheet_emp.json")
+    converter_json.convert_file()
+    

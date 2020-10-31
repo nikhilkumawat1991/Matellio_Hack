@@ -27,7 +27,7 @@ def video_feed():
 
 
 if __name__ == '__main__':
-    app.run(port=8808, threaded=True)
+    app.run(host="0.0.0.0",port=9090, threaded=True)
 
 
 

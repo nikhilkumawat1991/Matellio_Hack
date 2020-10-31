@@ -2,7 +2,7 @@ import os  # accessing the os functions
 import lcd_function
 import functionKeypress
 import sys
-import Recognize
+import Recognition_function
 import led_function
 from select import select
 # creating the title bar function
@@ -25,6 +25,7 @@ def mainMenu():
                 WrongId(x)
                 break
             elif User_id!="WrongId":
+                led_function.door_verify_open()
                 Verify(User_id)
                 break
             else:
@@ -37,15 +38,15 @@ def mainMenu():
 
 
 # ---------------------------------------------------------4
-# calling the camera test function from check camera.py file
 def WrongId(x):
     lcd_function.key_input(str(x)+"\n is Wrong_ID")
+    led_function.door_fail_open()
     key = input("Enter any key to return main menu")
     mainMenu()
 def Verify(x):
     lcd_function.key_input(str(x)+"\nlook at camera")
-    led_function.door_verify_open()
-    Recognize.recognize_attendence()
+    Recognition_function.recognize_attendence()
+    led_function.door_open()
     key = input("Enter any key to return main menu")
     mainMenu()
 def NumId():

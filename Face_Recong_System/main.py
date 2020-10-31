@@ -27,7 +27,7 @@ def mainMenu():
     print("[2] Capture Image Sample ")
     print("[3] Train Images")
     print("[4] Recognize ")
-    print("[5] Report Genration")
+    print("[5] Sending Data to the Cloud")
     print("[6] Quit")
 
     while True:

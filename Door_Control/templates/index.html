@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+      <title>Smartathon</title>
+      <link rel="shortcut icon" href="../static/images/favicon.png" />
+      <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/flatly/bootstrap.min.css" crossorigin="anonymous">
+      <link rel="stylesheet" href="http://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+      <link type="text/css"rel="stylesheet" href="../static/css/sweetalert.css">
+      <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script src="../static/js/sweetalert.js"></script>
+      <script src="../static/js/jquery.cookie.js"></script>
+   </head>
+   <body>
+      <div class="pg-login animate-area">
+         <div class="container">
+            <div class="row">
+               <div class="offset-sm-3 col-sm-6">
+                  <form class="form-signin" action="/services">
+                     <div class="log-in-box">
+                        <a href="#" class="inlineb w100 text-center mb-1"><img class="img-fluid logo-img" src="../static/images/logo.png" alt=""></a>
+                        <p class="wl-sub-text text-center mb-5">Please login to continue</p>
+                        <div class="form-group">
+                           <label for="inputEmail" class="control-label left-gap">
+                           <span class="mail-image"><img class="mail-position" src="../static/images/msg-icon.png" alt=""></span>
+                           Email address
+                           </label>
+                           <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                        </div>
+                        <div class="form-group">
+                           <label for="inputPassword" class="control-label left-gap">
+                           <span class="mail-image"><img class="mail-position" src="../static/images/password.png" alt=""></span>	
+                           Password</label>
+                           <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                           <i class="login-eye fa fa-eye togglepassword fc-gray"></i>
+                        </div>
+                        <div class="form-group mt-5">
+                           <div class="checkbox mb-3">
+                              <div class="checkCover">
+                                 <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" name="remember_me" value="1" id="remember_me" class="custom-control-input">             
+                                    <label class="custom-control-label" for="remember_me">Remember Me</label>
+                                 </div>
+                              </div>
+                              <div class="forgot-pass">
+                                 <a href="forgot">Forgot Password?</a>
+                              </div>
+                           </div>
+                        </div>
+                      
+                        <div class="form-group login-cover justify-content-center d-flex">
+                           <button class="pg-login-btn cust-btn" type="submit">
+                              Login
+                           </button>
+                        </div>
+                     </div>
+                  </form>
+              
+               </div>
+            </div>
+         </div>
+      </div>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="http://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="../static/js/custom.js"></script>
+   </body>
+</html>
+<script type="text/javascript">
+   $(window).load(function(){
+   	localStorage.setItem('artisan-key', "");
+   	/* get cookies */
+   	if ($.cookie('cookieStore')) {
+   		var data=JSON.parse($.cookie("cookieStore"));
+   		$('#inputEmail').val(data[0]);
+   		$('#inputPassword').val(data[1]);
+   	}
+   
+   	$( "form" ).submit(function( event ) { 	
+   		
+   	  if ( $("#inputEmail" ).val() === "admin@smartathon.com" && $("#inputPassword" ).val() === "admin" ) {  
+   		var result           = '';
+   		var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-@#0123456789';
+   	   	var charactersLength = characters.length;
+   	   	for ( var i = 0; i < 20; i++ ) {
+   	    	result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   	   	}
+   	  	localStorage.setItem('artisan-key', result);
+   	  	
+   		//   cookies
+   		if($("#remember_me").prop('checked')) {
+   		   var storeData = new Array();
+   		   storeData[0] = $('#inputEmail').val();
+   		   storeData[1] = $('#inputPassword').val();
+   		   $.cookie("cookieStore", JSON.stringify(storeData));			   
+   		}
+   	    return;  
+   	  }  
+        swal("Invalid Credential!");
+   	  event.preventDefault();  
+   	});
+   
+   	// toggle password icon
+   	$('body').on('click', '.togglepassword', function(e) {
+   		e.stopPropagation();
+   		$(this).toggleClass("fa-eye fa-eye-slash");
+   		var input = $($(this).prev());
+   		if (input.attr("type") == "password") {
+   			input.attr("type", "text");
+   		} else {
+   			input.attr("type", "password");
+   		}
+   	});
+   });
+</script>

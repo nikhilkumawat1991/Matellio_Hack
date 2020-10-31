@@ -100,6 +100,5 @@ def idFormat():
     
 #inputMsg()
 #idFormat()
-
-    
+msg_door_open()
 

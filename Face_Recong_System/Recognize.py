@@ -30,7 +30,7 @@ def recognize_attendence():
         ret, im = cam.read()
         #conf=0;
         #confstr=0;
-        print(im)
+        #print(im)
         gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
         faces = faceCascade.detectMultiScale(gray, 1.2, 5,minSize = (int(minW), int(minH)),flags = cv2.CASCADE_SCALE_IMAGE)
         for(x, y, w, h) in faces:
@@ -52,7 +52,7 @@ def recognize_attendence():
                 confstr = "  {0}%".format(round(100 - conf))
                 
 
-            if (100-conf) > 67:
+            if (100-conf) > 60:
                 ts = time.time()
                 date = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d')
                 timeStamp = datetime.datetime.fromtimestamp(ts).strftime('%H:%M:%S')
@@ -61,7 +61,7 @@ def recognize_attendence():
                
 
             tt = str(tt)[2:-2]
-            if(100-conf) > 67:
+            if(100-conf) > 60:
                 tt = tt + " [Pass]"
                 cv2.putText(im, str(tt), (x+5,y-5), font, 1, (255, 255, 255), 2)
                 print("Red Led Off")
@@ -69,6 +69,7 @@ def recognize_attendence():
                 print("Green_LED ON")
                 time.sleep(2)
                 print("Green_LED Off")
+                print("pass")
                 #cv2.destroyAllWindows()
     
                
@@ -77,19 +78,19 @@ def recognize_attendence():
         
             else:
                 cv2.putText(im, str(tt), (x + 5, y - 5), font, 1, (255, 255, 255), 2)
-                print("Green_LED Off")
-                print("Red Led ON")
-                print("White Led Off")
+                #print("Green_LED Off")
+                #print("Red Led ON")
+                #print("White Led Off")
                
 
-            if (100-conf) > 67:
+            if (100-conf) > 50:
                 cv2.putText(im, str(confstr), (x + 5, y + h - 5), font,1, (0, 255, 0),1 )
-                print("Green_LED Off")
+                #print("Green_LED Off")
             elif (100-conf) > 50:
                 cv2.putText(im, str(confstr), (x + 5, y + h - 5), font, 1, (0, 255, 255), 1)
-                print("Green_LED Off")
-                print("RED_LED Off")
-                print("White_LED_ON")
+                #print("Green_LED Off")
+                #print("RED_LED Off")
+                #print("White_LED_ON")
             else:
                 cv2.putText(im, str(confstr), (x + 5, y + h - 5), font, 1, (0, 0, 255), 1)
 
